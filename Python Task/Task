@@ -1,0 +1,61 @@
+# 1. Invert a dictionary with list values (group keys by their values)
+d = {'a': 1, 'b': 2, 'c': 1, 'd': 3}
+inverted = {}
+for key, value in d.items():
+    inverted.setdefault(value, []).append(key)
+print("1. Inverted Dictionary:", inverted)
+
+# 2. Find Max and Min Value in Dictionary
+d = {'a': 10, 'b': 5, 'c': 15}
+print("2. Max Value →", max(d.values()))
+print("2. Min Value →", min(d.values()))
+
+# 3. Dictionary where value is "prime"/"notprime"
+def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+numbers = [2, 3, 4, 5, 6]
+prime_dict = {num: "prime" if is_prime(num) else "notprime" for num in numbers}
+print("3. Prime Dict:", prime_dict)
+
+# 4. Dictionary from list of words (words > 3 characters, value = word length)
+words = ["hi", "hello", "world", "is", "great"]
+word_dict = {word: len(word) for word in words if len(word) > 3}
+print("4. Word Length Dict:", word_dict)
+
+# 5. Dictionary with uppercase letters as keys and their ASCII values as values
+letters = ['a', 'b', 'c']
+ascii_dict = {letter.upper(): ord(letter.upper()) for letter in letters}
+print("5. ASCII Dict:", ascii_dict)
+
+# 6. setdefault() explanation
+print("\n6. setdefault() Explanation:")
+print("The setdefault() method returns the value of a key if present.")
+print("If not, it inserts the key with a default value and returns it.")
+
+example = {}
+example.setdefault('fruit', []).append('apple')
+print("Example:", example)  # {'fruit': ['apple']}
+
+# 7. Difference between d[key] and d.get(key)
+print("\n7. d[key] vs d.get(key):")
+d = {'x': 100}
+# d['y']  # Raises KeyError if uncommented
+print("d.get('y') →", d.get('y'))           # None
+print("d.get('y', 'default') →", d.get('y', 'default'))
+
+# 8. Shallow Copy vs Deep Copy
+print("\n8. Shallow Copy vs Deep Copy:")
+import copy
+original = {'a': [1, 2]}
+shallow = copy.copy(original)
+deep = copy.deepcopy(original)
+original['a'].append(3)
+print("Original:", original)    
+print("Shallow Copy:", shallow)  
+print("Deep Copy:", deep)       
